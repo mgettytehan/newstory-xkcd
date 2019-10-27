@@ -1,10 +1,16 @@
 import React from 'react';
 import { comicDisplay } from '../shared/comicDisplay.js';
 
+//handle if GET fails (covers non-existent ids)
 const getComicById = (comicId) =>
     fetch(`https://xkcd.now.sh/?comic=${comicId}`)
-    .then(res => res.json())
-    .catch(console.log);
+    .then(res => {
+        if (res.ok)
+            return res.json();
+        else
+            throw new Error('Could not get comic');
+    })
+    .catch(err => { throw new Error('Could not get comic') });
 
 export default class Search extends React.Component {
     state = {
@@ -13,13 +19,17 @@ export default class Search extends React.Component {
     }
 
     componentDidMount() {
-        //set to comic 1 on page load
-        this.setSearchedComic("1");
+        //set to comic 303 on page load
+        this.setSearchedComic("303");
     }
 
     setSearchedComic = comicId => {
         getComicById(comicId)
-            .then(searchedComic => this.setState({searchedComic}));
+            .then(searchedComic => this.setState({searchedComic}))
+            .catch(err => {
+                this.setState({searchedComic: {}});
+                console.log(err);
+            });
     }
 
     handleChange = evnt => {
@@ -42,7 +52,7 @@ export default class Search extends React.Component {
                     {/* Displays not found message if searchedComic is empty or undef */}
                     {(this.state.searchedComic && Object.keys(this.state.searchedComic).length !== 0)
                     ? comicDisplay(this.state.searchedComic, "searchImage")
-                    : "No comic found with that id"}
+                    : "No comic found with that id. Please type another."}
                 </div>
             </div>
         );

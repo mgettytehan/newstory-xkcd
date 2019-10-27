@@ -20,9 +20,9 @@ export default class Latest extends React.Component {
     render() {
         return (
             <div>
-                {!Object.keys(this.state.comic)
-                ? "No comic found"
-                : comicDisplay(this.state.comic, "latestImage")
+                {this.state.comic && Object.keys(this.state.comic)
+                ? comicDisplay(this.state.comic, "latestImage")
+                : "Whoops! No comic found."
                 }
             </div>
         )
