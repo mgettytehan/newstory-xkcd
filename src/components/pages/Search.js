@@ -1,4 +1,5 @@
 import React from 'react';
+import { comicDisplay } from '../shared/comicDisplay.js';
 
 const getComicById = (comicId) =>
     fetch(`https://xkcd.now.sh/?comic=${comicId}`)
@@ -40,10 +41,7 @@ export default class Search extends React.Component {
                 <div>
                     {/* Displays not found message if searchedComic is empty or undef */}
                     {(this.state.searchedComic && Object.keys(this.state.searchedComic).length !== 0)
-                    ? (<img src={this.state.searchedComic.img}
-                        alt={this.state.searchedComic.title}
-                        title={this.state.searchedComic.alt}
-                        className="searchImage" />)
+                    ? comicDisplay(this.state.searchedComic, "searchImage")
                     : "No comic found with that id"}
                 </div>
             </div>

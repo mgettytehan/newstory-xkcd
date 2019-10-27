@@ -1,4 +1,5 @@
 import React from 'react';
+import { comicDisplay } from '../shared/comicDisplay.js'
 
 const getLatestComic = () => 
     fetch('https://xkcd.now.sh/?comic=latest')
@@ -21,10 +22,8 @@ export default class Latest extends React.Component {
             <div>
                 {!Object.keys(this.state.comic)
                 ? "No comic found"
-                : (<img src={this.state.comic.img}
-                    alt={this.state.comic.title}
-                    title={this.state.comic.alt}
-                    className="latestImage" />)}
+                : comicDisplay(this.state.comic, "latestImage")
+                }
             </div>
         )
     }
