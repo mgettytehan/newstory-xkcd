@@ -45,7 +45,11 @@ export default class Search extends React.Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="number" name="comicId" value={this.state.comicId} className="searchInput" onChange={this.handleChange} required />
+                    <input type="number" name="comicId" value={this.state.comicId}
+                    className="searchInput"
+                    max="2219" min="1"
+                    onChange={this.handleChange}
+                    required />
                     <input type="submit" value="Search" className="searchSubmit" />
                 </form>
                 <div>
