@@ -1,0 +1,12 @@
+.image-details {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    margin: 15px;
+    grid-gap: 10px;
+    justify-items: left;
+    justify-content: space-evenly;
+}
+
+.image-details > :nth-child(odd) {
+    font-weight: bold;
+}
