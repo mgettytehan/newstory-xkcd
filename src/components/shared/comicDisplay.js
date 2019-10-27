@@ -1,4 +1,5 @@
 import React from 'react';
+import './comicDisplay.css';
 
 const comicDisplay = (comic = {}, imageClass = "searchImage") => (
     <div className="comicDisplay">
