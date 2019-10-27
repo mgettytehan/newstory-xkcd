@@ -10,11 +10,14 @@ const comicDisplay = (comic = {}, imageClass = "searchImage") => (
                 className={imageClass}
             />
         </div>
-        <div className="image-details">
+        {Object.keys(comic)
+        ? <div className="image-details">
             <div>Title:</div><div>{comic.title}</div>
             <div>Post number:</div><div>{comic.num}</div>
             <div>Date posted:</div><div>{`${comic.month}/${comic.day}/${comic.year}`}</div>
         </div>
+        : "No details found!"
+        }
     </div>
 );
 
