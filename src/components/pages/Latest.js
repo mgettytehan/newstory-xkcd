@@ -7,7 +7,7 @@ const getLatestComic = () =>
 
 export default class Latest extends React.Component {
     state = {
-        comic: 0
+        comic: {}
     }
 
     componentDidMount() {
@@ -19,7 +19,7 @@ export default class Latest extends React.Component {
     render() {
         return (
             <div className="latest">
-                {!this.state.comic
+                {!Object.keys(this.state.comic)
                 ? "No comic found"
                 : (<img src={this.state.comic.img} alt={this.state.comic.title} className="latestImage" />)}
             </div>
