@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route, NavLink } from 'react-router-dom';
 import Latest from './components/pages/Latest.js';
 import Search from './components/pages/Search.js'
+import { notFound } from './components/pages/NotFound.js'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Switch>
           <Route exact path="/search" component={Search} />
           <Route exact path="/" component={Latest} />
+          <Route component={notFound} />
         </Switch>
       </main>
     </div>
