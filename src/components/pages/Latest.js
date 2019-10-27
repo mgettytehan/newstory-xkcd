@@ -18,10 +18,13 @@ export default class Latest extends React.Component {
 
     render() {
         return (
-            <div className="latest">
+            <div>
                 {!Object.keys(this.state.comic)
                 ? "No comic found"
-                : (<img src={this.state.comic.img} alt={this.state.comic.title} className="latestImage" />)}
+                : (<img src={this.state.comic.img}
+                    alt={this.state.comic.title}
+                    title={this.state.comic.alt}
+                    className="latestImage" />)}
             </div>
         )
     }
